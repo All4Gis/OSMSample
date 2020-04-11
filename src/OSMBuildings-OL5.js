@@ -4,6 +4,7 @@
  * A JavaScript library for visualizing building geometry on interactive maps.
  * @osmbuildings, http://osmbuildings.org
  *
+ * Modificated by Fran Raga : https://github.com/All4Gis
  */
 
 import { Vector as VectorLayer } from "ol/layer.js";
