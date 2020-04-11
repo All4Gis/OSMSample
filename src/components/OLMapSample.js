@@ -1,79 +1,87 @@
 import React from "react";
 
-// Openlayers imports
 import { Map, View } from "ol";
 import { Tile as TileLayer } from "ol/layer";
-import { TileWMS as TileWMSSource } from "ol/source";
-import { ScaleLine, ZoomSlider, defaults as DefaultControls } from "ol/control";
-import {
-  defaults as defaultInteractions,
-  DragRotateAndZoom
-} from "ol/interaction";
 import "ol/ol.css";
 import OSM from "ol/source/OSM";
-
-// End Openlayers imports
+import OSMBuildings from "../OSMBuildings-OL5";
+import * as olProj from "ol/proj.js";
+import Button from "@material-ui/core/Button";
 
 class OLMapSample extends React.Component {
   constructor(props) {
     super(props);
-    this.updateDimensions = this.updateDimensions.bind(this);
+    this.state = {
+      map: null,
+      featuresLayer: null,
+      OSMBuildings: false,
+      text: "Show Buildings"
+    };
   }
-
-  updateDimensions() {
-    const h = window.innerWidth >= 992 ? window.innerHeight : 400;
-    this.setState({ height: h });
-  }
-  componentWillMount() {
-    window.addEventListener("resize", this.updateDimensions);
-    this.updateDimensions();
-  }
-  componentDidMount() {
-    // Create an Openlayer Map instance with two tile layers
-    new Map({
-      //  Display the map in the div with the id of map
-      target: "map",
+  componentDidMount = () => {
+    // create map object with feature layer
+    let map = new Map({
+      target: "mapContainer",
       layers: [
+        //default OSM layer
         new TileLayer({
           source: new OSM()
-        }),
-        new TileLayer({
-          source: new TileWMSSource({
-            url: "https://ahocevar.com/geoserver/wms",
-            params: {
-              layers: "topp:states",
-              TILED: true,
-              serverType: "geoserver",
-              // Countries have transparency, so do not fade tiles:
-              transition: 0
-            },
-            projection: "EPSG:4326"
-          }),
-          name: "USA"
         })
       ],
-      // Add in the following map interactions
-      interactions: defaultInteractions().extend([new DragRotateAndZoom()]),
-      // Add in the following map controls
-      controls: DefaultControls().extend([new ZoomSlider(), new ScaleLine()]),
-      // Render the tile layers in a map view with a Mercator projection
       view: new View({
-        projection: "EPSG:3857",
-        center: [0, 0],
-        zoom: 2
+        center: olProj.transform([13.33522, 52.5044], "EPSG:4326", "EPSG:3857"),
+        zoom: 16
       })
     });
-  }
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
+
+    // save map and layer references to local state
+    this.setState({
+      map: map
+    });
+  };
+
+  toggleOSMBuildings = () => {
+    if (!this.state.OSMBuildings) {
+      //console.log("Show OSM Building");
+      this.osmBuildings = new OSMBuildings(this.state.map);
+      this.osmBuildings.date(new Date(2017, 5, 15, 17, 30));
+      this.osmBuildings.load();
+      this.setState({ text: "Hide Buildings" });
+    } else {
+      //console.log("Hide OSM Building");
+      this.osmBuildings.unload();
+      this.setState({ text: "Show Buildings" });
+    }
+  };
+
   render() {
+    const { text } = this.state;
     const style = {
       width: "100%",
-      height: this.state.height,
+      height: "500px",
       backgroundColor: "#ffffff"
     };
-    return <div id="map" style={style}></div>;
+    const styleBtn = {
+      margin: 5
+    };
+    return (
+      <div>
+        <div id="mapContainer" style={style}></div>
+        <Button
+          style={styleBtn}
+          color={this.state.OSMBuildings ? "secondary" : "primary"}
+          variant="contained"
+          onClick={() =>
+            this.setState(
+              { OSMBuildings: !this.state.OSMBuildings },
+              this.toggleOSMBuildings()
+            )
+          }
+        >
+          {text}
+        </Button>
+      </div>
+    );
   }
 }
 export default OLMapSample;
