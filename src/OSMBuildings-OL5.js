@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 /**
  * Copyright (C) 2019 OSM Buildings, Jan Marsch
  * A JavaScript library for visualizing building geometry on interactive maps.
@@ -7,13 +8,10 @@
 
 import { Vector as VectorLayer } from "ol/layer.js";
 import VectorSource from "ol/source/Vector.js";
-import { inherits as olInherits } from "ol/util.js";
 import * as olProj from "ol/proj.js";
 
 //****** file: Block.js ******
 class Block {
-  constructor() {}
-
   draw(
     context,
     polygon,
@@ -643,7 +641,6 @@ class Color {
 
 //****** file: Cylinder.js ******
 class Cylinder {
-  constructor() {}
   draw(
     context,
     center,
@@ -1107,30 +1104,6 @@ class Data {
   }
 }
 
-//****** file: Debug.js ******
-class Debug {
-  constructor() {}
-
-  point(x, y, color, size) {
-    var context = this.context;
-    context.fillStyle = color || "#ffcc00";
-    context.beginPath();
-    context.arc(x, y, size || 3, 0, 2 * PI);
-    context.closePath();
-    context.fill();
-  }
-
-  line(ax, ay, bx, by, color) {
-    var context = this.context;
-    context.strokeStyle = color || "#ffcc00";
-    context.beginPath();
-    context.moveTo(ax, ay);
-    context.lineTo(bx, by);
-    context.closePath();
-    context.stroke();
-  }
-}
-
 //****** file: functions.js ******
 class Functions {
   static rad(deg) {
@@ -1368,7 +1341,6 @@ class GeoJSON {
       case "GeometryCollection":
         geometries = [];
         for (i = 0, il = geometry.geometries.length; i < il; i++) {
-          let me = this;
           if ((sub = this.getGeometries(geometry.geometries[i]))) {
             geometries.push.apply(geometries, sub);
           }
@@ -1923,8 +1895,6 @@ class Layers {
 
 //****** file: Pyramid.js ******
 class Pyramid {
-  constructor() {}
-
   draw(context, polygon, center, height, minHeight, color, altColor) {
     var c = {
         x: center.x - ORIGIN_X,
@@ -2794,10 +2764,6 @@ var ceil = m.ceil;
 var pow = m.pow;
 
 // polyfills
-
-var Int32Array = Int32Array || Array;
-var Uint8Array = Uint8Array || Array;
-
 var IS_IOS = /iP(ad|hone|od)/g.test(navigator.userAgent);
 var IS_MSIE = !!~navigator.userAgent.indexOf("Trident");
 var requestAnimFrame =
