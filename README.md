@@ -16,5 +16,7 @@ To get the Node server running locally:
 
 # Dependencies
 [Create React App](https://github.com/facebook/create-react-app) 
+
 [OpenLayers](https://github.com/openlayers/openlayers) 
+
 [OSM Buildings Classic 2.5D](https://github.com/kekscom/osmbuildings) 
