@@ -5,3 +5,6 @@ run:
 `npm install`
 
 `npm run`
+
+
+![](screenshot.gif)
