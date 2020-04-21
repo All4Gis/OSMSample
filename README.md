@@ -1,1 +1,7 @@
-Create react app + OpenLayer minimal sample
+# Create react app + OpenLayer + OSM Buildings minimal sample
+
+run:
+
+`npm install`
+
+`npm run`
