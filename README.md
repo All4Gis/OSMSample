@@ -15,3 +15,5 @@ Open:
  ```
 localhost:3000
 ```
+
+Go to [OSMBuildings](https://github.com/All4Gis/OSMSample/tree/OSMBuildings) branch to show the openlayers sample loading OSMBuildings classic.
