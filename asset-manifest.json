@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/OSMSample/static/css/main.0c907582.chunk.css",
+    "main.js": "/OSMSample/static/js/main.dcb9f93e.chunk.js",
+    "main.js.map": "/OSMSample/static/js/main.dcb9f93e.chunk.js.map",
+    "runtime-main.js": "/OSMSample/static/js/runtime-main.8e92b853.js",
+    "runtime-main.js.map": "/OSMSample/static/js/runtime-main.8e92b853.js.map",
+    "static/css/2.db529fa1.chunk.css": "/OSMSample/static/css/2.db529fa1.chunk.css",
+    "static/js/2.35a4bb0a.chunk.js": "/OSMSample/static/js/2.35a4bb0a.chunk.js",
+    "static/js/2.35a4bb0a.chunk.js.map": "/OSMSample/static/js/2.35a4bb0a.chunk.js.map",
+    "index.html": "/OSMSample/index.html",
+    "precache-manifest.44926999144e8c6c56800b491bd78dee.js": "/OSMSample/precache-manifest.44926999144e8c6c56800b491bd78dee.js",
+    "service-worker.js": "/OSMSample/service-worker.js",
+    "static/css/2.db529fa1.chunk.css.map": "/OSMSample/static/css/2.db529fa1.chunk.css.map",
+    "static/css/main.0c907582.chunk.css.map": "/OSMSample/static/css/main.0c907582.chunk.css.map",
+    "static/js/2.35a4bb0a.chunk.js.LICENSE.txt": "/OSMSample/static/js/2.35a4bb0a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8e92b853.js",
+    "static/css/2.db529fa1.chunk.css",
+    "static/js/2.35a4bb0a.chunk.js",
+    "static/css/main.0c907582.chunk.css",
+    "static/js/main.dcb9f93e.chunk.js"
+  ]
+}
