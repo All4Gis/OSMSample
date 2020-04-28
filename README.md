@@ -3,6 +3,8 @@
 Example for using OSM Buildings classic in create react app.
 The file [OSMBuildings-OL5.js](src/OSMBuildings-OL5.js) is modified to work with create react app.
 
+## [👉 Live Demo 👈](https://all4gis.github.io/OSMSample/)
+
 # Getting started
 To get the Node server running locally:
 
